@@ -2,11 +2,14 @@
   \enableregime[utf-8]  
   \setupcolors[state=start]
 \stopmode
+$if(mainlang)$
+\mainlanguage[$mainlang$]
+$endif$
 
 % Enable hyperlinks
 \setupinteraction[state=start, color=middleblue]
 
-\setuppapersize [letter][letter]  
+\setuppapersize [$if(papersize)$$papersize$$else$letter$endif$][$if(papersize)$$papersize$$else$letter$endif$]
 \setuplayout    [width=middle,  backspace=1.5in, cutspace=1.5in,
                  height=middle, topspace=0.75in, bottomspace=0.75in]
 
@@ -16,9 +19,15 @@
 
 \setupwhitespace[medium]
 
+\setuphead[chapter]      [style=\tfd]
 \setuphead[section]      [style=\tfc]
 \setuphead[subsection]   [style=\tfb]
 \setuphead[subsubsection][style=\bf]
+
+$if(number-sections)$
+$else$
+\setuphead[chapter, section, subsection, subsubsection][number=no]
+$endif$
 
 \definedescription
   [description]
@@ -26,6 +35,9 @@
 
 \setupitemize[autointro]    % prevent orphan list intro
 \setupitemize[indentnext=no]
+
+\setupfloat[figure][default={here,nonumber}]
+\setupfloat[table][default={here,nonumber}]
 
 \setupthinrules[width=15em] % width of horizontal rules
 
@@ -36,6 +48,10 @@
    indentnext=no,
   ]
 
+$if(toc)$
+\setupcombinedlist[content][list={$placelist$}]
+
+$endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
