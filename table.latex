@@ -1,4 +1,4 @@
-\documentclass[twocolumn,a4paper]{article}
+\documentclass[landscape,a4paper,8pt]{extarticle}
 
 % Typography
 \usepackage{fontspec}
@@ -10,7 +10,7 @@
 \captionsetup{margin=10pt,font=small,labelfont=bf}
 
 %Custom margins
-\usepackage[hmargin=2cm,vmargin=2.5cm]{geometry}
+\usepackage[hmargin=0.5cm,vmargin=0.5cm]{geometry}
 
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -87,8 +87,8 @@ $endif$
 $if(subscript)$
 \newcommand{\textsubscr}[1]{\ensuremath{_{\scriptsize\textrm{#1}}}}
 $endif$
-% \setlength{\parindent}{0pt}
-% \setlength{\parskip}{0pt plus 2pt minus 1pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 $if(listings)$
 \usepackage{listings}
@@ -117,6 +117,8 @@ $endif$
 $if(title)$
 \maketitle
 $endif$
+\thispagestyle{empty}
+\pagestyle{empty} 
 
 $for(include-before)$
 $include-before$
