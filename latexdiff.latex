@@ -1,0 +1,18 @@
+\documentclass[a4paper]{article}
+
+% Typography
+\usepackage{fontspec}
+\setmainfont[SmallCapsFont={Equity Caps A}]{Equity Text A}
+\usepackage{microtype}
+
+% Custom margins
+\usepackage[hmargin=2cm,vmargin=2.5cm]{geometry}
+
+% Suppress section numbers
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+
+$body$
+
+\end{document}

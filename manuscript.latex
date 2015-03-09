@@ -10,7 +10,7 @@
 \captionsetup{margin=10pt,font=small,labelfont=bf}
 
 %Custom margins
-\usepackage[hmargin=2cm,vmargin=2.5cm]{geometry}
+\usepackage[hmargin=1cm,vmargin=2cm]{geometry}
 
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -88,7 +88,7 @@ $if(subscript)$
 \newcommand{\textsubscr}[1]{\ensuremath{_{\scriptsize\textrm{#1}}}}
 $endif$
 % \setlength{\parindent}{0pt}
-% \setlength{\parskip}{0pt plus 2pt minus 1pt}
+\setlength{\parskip}{0pt plus 0.5pt minus 0.5pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 $if(listings)$
 \usepackage{listings}

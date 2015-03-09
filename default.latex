@@ -1,7 +1,19 @@
-\documentclass$if(fontsize)$[$fontsize$,a4paper]$endif${extarticle}
+\documentclass[a4paper]{article}
+
+% Typography
+\usepackage{fontspec}
+\setmainfont[SmallCapsFont={Equity Caps A}]{Equity Text A}
+\usepackage{microtype}
+
+% Blockquotes
+\renewenvironment{quote}{\begin{quote}\colorbox{red}{}{}\end{quote}}
+
+% Captions
+\usepackage{caption}
+\captionsetup{margin=10pt,font=small,labelfont=bf}
 
 %Custom margins
-\usepackage[hmargin=3cm,vmargin=3.5cm]{geometry}
+\usepackage[hmargin=2cm,vmargin=2.5cm]{geometry}
 
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -17,16 +29,16 @@
     \usepackage[utf8]{inputenc}
   \fi
 \fi
-$if(natbib)$
-\usepackage{natbib}
-\bibliographystyle{plainnat}
-$endif$
+
+% Bibliography
 $if(biblatex)$
 \usepackage{biblatex}
+\renewcommand*{\bibfont}{\footnotesize}
 $if(biblio-files)$
 \bibliography{$biblio-files$}
 $endif$
 $endif$
+
 $if(lhs)$
 \usepackage{listings}
 \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
@@ -78,8 +90,8 @@ $endif$
 $if(subscript)$
 \newcommand{\textsubscr}[1]{\ensuremath{_{\scriptsize\textrm{#1}}}}
 $endif$
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
+% \setlength{\parindent}{0pt}
+% \setlength{\parskip}{0pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 $if(listings)$
 \usepackage{listings}
@@ -98,12 +110,11 @@ $endfor$
 $if(title)$
 \title{$title$}
 $endif$
+
 $if(author)$
-\author{$for(author)$$author$$sep$ \and $endfor$}
+\author{$for(author)$ $author.name$$if(author.affiliation)$ \footnote{$author.affiliation$}$endif$ $sep$ \and $endfor$}
 $endif$
-$if(date)$
-\date{$date$}
-$endif$
+\date{\today}
 
 \begin{document}
 $if(title)$
@@ -120,23 +131,10 @@ $if(toc)$
 $endif$
 $body$
 
-$if(natbib)$
-$if(biblio-files)$
-$if(biblio-title)$
-$if(book-class)$
-\renewcommand\bibname{$biblio-title$}
-$else$
-\renewcommand\refname{$biblio-title$}
-$endif$
-$endif$
-\bibliography{$biblio-files$}
-
-$endif$
-$endif$
 $if(biblatex)$
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-
 $endif$
+
 $for(include-after)$
 $include-after$
 
