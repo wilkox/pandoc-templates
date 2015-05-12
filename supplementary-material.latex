@@ -1,13 +1,19 @@
 \documentclass[a4paper]{article}
 
 % Typography
+%% Fonts
 \usepackage{fontspec}
 \setmainfont[SmallCapsFont={Equity Caps A}]{Equity Text A}
 \usepackage{microtype}
+%% URLs
 \usepackage{hyperref}
+%% Paragraphs
+\setlength\parindent{0pt}
+\setlength{\parskip}{1em plus4mm minus3mm}
 
 % Custom margins
 \usepackage[hmargin=2cm,vmargin=2.5cm]{geometry}
+\sloppy
 
 % Suppress section numbers
 \setcounter{secnumdepth}{0}
